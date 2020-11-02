@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-router.get('/checkout', async (req, res) => {
+router.get('/', async (req, res) => {
     res.send('Checkout page');
 });
 
