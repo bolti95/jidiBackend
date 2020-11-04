@@ -14,3 +14,10 @@ exports.deleteCustomerOrders = async (req, res) => {
     functions.deleteCustomerOrders(ID)
     res.send('Customer has been deleted')
 }
+
+exports.decreaseStockedProducts = async (req, res) => {
+    let {ID} = req.query
+     functions.decreaseStockedProducts(ID)
+     res.send('Stock decreased')
+    
+}
