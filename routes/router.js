@@ -1,8 +1,12 @@
 
-const router = require("express").Router();
+const routes = require("express").Router();
 
-router.get('/', (req, res) => {
+const routeController = require('../controllers/connectionController')
+
+routes.get('/', (req, res) => {
     res.send('Home Page');
 });
 
-module.exports = router;
+routes.post('/create', routeController.postCustomerOrders)
+
+module.exports = routes;
