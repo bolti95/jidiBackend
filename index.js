@@ -10,6 +10,11 @@ const customerOrder = require('./routes/customerOrderRouter')
 const stockedProducts = require('./routes/stockedProductsRouter')
 
 
+const sql = require('mssql')
+
+
+
+
 const app = express();
 
 app.use(cors());
@@ -27,6 +32,10 @@ app.use('/stockedProducts', stockedProducts)
 // })
 
 
+
+
 app.listen(process.env.PORT || 3005, () => {
     console.log ('Server is running on port 3005')
 })
+
+
