@@ -1,8 +1,7 @@
 const router = require("express").Router();
-const bodyParser = require('body-parser');
-const functions = require('../lib/connection');
-const orderid = require('order-id')('mysecret');
 
+const orderid = require('order-id')('mysecret');
+const bodyParser = require('body-parser');
 
 router.get('/', async (req, res) => {
     res.send('Checkout page');
@@ -10,28 +9,19 @@ router.get('/', async (req, res) => {
 
 
 router.post('/create', async (req, res) => {
-    let {customerName, Items, SaleAmount, email, cardNumber} = req.body 
-    const ID = orderid.generate();
+
+        let {customerName, email, cardNumber, expiryDate, cvc} = req.body 
+        const orderNumber = orderid.generate();
+        
+        // orderid.getTime(id)
     
-    orderid.getTime(id)
+       
+        console.log(req.body)
+        res.send({message: 'Order created', ID: orderNumber})
+       
+    });
+    
 
-    let customerOrder = ({
-        ID,
-        customerName,
-        Items, 
-        SaleAmount,
-        email,
-        cardNumber      
-    }) 
-    res.send('Order created', req.body)
-    console.log(customerOrder)
-    console.log(req.body)
-    //if statement: if the data is there, create order number, if it's not, create error
-});
-
-router.get('/create', async (req, res) => {
-    res.send('Checkout page 123');
-});
 
 router.delete('/delete', async(req, res) => {
     res.send('Order now deleted')
