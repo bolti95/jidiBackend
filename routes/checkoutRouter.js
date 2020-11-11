@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const orderid = require('order-id')('mysecret');
 const bodyParser = require('body-parser');
 
@@ -6,7 +7,9 @@ router.get('/', async (req, res) => {
     res.send('Checkout page');
 });
 
+
 router.post('/create', async (req, res) => {
+
         let {customerName, email, cardNumber, expiryDate, cvc} = req.body 
         const orderNumber = orderid.generate();
         

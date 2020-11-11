@@ -4,7 +4,7 @@ router.get('/basket', async (req, res) => {
     res.send('Items in Basket');
 });
 
-router.put('update', async (req, res) => {
+router.put('/update', async (req, res) => {
     res.send('Order updated')
 });
 
