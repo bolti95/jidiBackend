@@ -4,8 +4,8 @@ const functions = require('../lib/connection')
 
 
 exports.postCustomerOrders = async (req, res) => {
-    let {ID, CustomerName, Items, SaleAmount} = req.query
-    functions.createCustomerOrders(ID, CustomerName, Items, SaleAmount )
+    let {ID, customerName, email, cardNumber, expiryDate, cvc} = req.query
+    functions.createCustomerOrders(ID, customerName, email, cardNumber, expiryDate, cvc)
     res.send('Customer order created')
 }
 
