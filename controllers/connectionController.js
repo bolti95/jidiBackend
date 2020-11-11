@@ -2,9 +2,11 @@ const functions = require('../lib/connection')
 
 
 exports.postCustomerOrders = async (req, res) => {
-    let {ID, CustomerName, Items, SaleAmount, email} = req.query
-    functions.createCustomerOrders(ID, CustomerName, Items, SaleAmount, email )
-    res.send('Customer order created', req.query)
+
+    let {ID, customerName, email, cardNumber, expiryDate, cvc} = req.query
+    functions.createCustomerOrders(ID, customerName, email, cardNumber, expiryDate, cvc)
+    res.send('Customer order created')
+
 }
 
 exports.deleteCustomerOrders = async (req, res) => {
