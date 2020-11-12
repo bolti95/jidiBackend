@@ -1,14 +1,6 @@
 const functions = require('../lib/connection')
 
 
-exports.postCustomerOrders = async (req, res) => {
-
-    let {ID, customerName, email, cardNumber, expiryDate, cvc} = req.query
-    functions.createCustomerOrders(ID, customerName, email, cardNumber, expiryDate, cvc)
-    res.send('Customer order created')
-
-}
-
 exports.deleteCustomerOrders = async (req, res) => {
     let {ID} = req.query
     functions.deleteCustomerOrders(ID)
@@ -21,3 +13,9 @@ exports.decreaseStockedProducts = async (req, res) => {
      res.send('Stock decreased')
     
 }
+
+//a controller is something that seperates functionality of routes into spereate files
+//controllers could be all of the functionality if router gets too long 
+//groups of routes and groups of controllers]
+//everything for checkout has seperate controllers
+//everything for each component will have it's own controller

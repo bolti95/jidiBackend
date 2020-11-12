@@ -12,7 +12,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mssql": "^6.2.3",
-    "order-id": "^2.1.0"
+    "order-id": "^2.1.0",
+    "sql": "^0.78.0"
   },
   "devDependencies": {},
   "scripts": {
