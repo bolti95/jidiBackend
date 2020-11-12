@@ -1,7 +1,20 @@
 const router = require("express").Router();
-const routeController = require('../controllers/connectionController')
 
+const functions = require('../lib/connection')
 
-router.patch('/decrease', routeController.decreaseStockedProducts)
+// router.get('/basket', async (req, res) => {
+//     res.send('Items in Basket');
+// });
 
-module.exports = router
+router.put('/update', async (req, res) => {
+     // req.body.items.numbers = quantity
+    functions.updateStockedProducts()
+    res.send('Order updated, data base changed')
+});
+
+router.delete('/delete', async(req, res) => {
+    res.send('Items deleted')
+})
+
+module.exports = router;
+

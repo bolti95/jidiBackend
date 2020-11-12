@@ -12,34 +12,37 @@ router.get('/', async (req, res) => {
 
 
 router.post('/create', async (req, res) => {
-
-        let {customerName, email, cardNumber, expiryDate, cvc} = req.body 
+    console.log('hello')
+        // let {customerName, email, cardNumber, expiryDate, cvc} = req.body 
  
         const orderNumber = orderid.generate();
+        req.body.orderNumber = orderNumber;
+       
+       
+        functions.createCustomerOrders(req.body) 
+
         
-        // orderid.getTime(id)
-        // functions.createCustomerOrders   
-        functions.createCustomerOrders({orderNumber, customerName, email, cardNumber, expiryDate, cvc}) 
         
 
-        console.log(req.body)
+        // console.log(req.body)
         res.send({message: 'Order created', orderNumber: orderNumber})
        
     });
-    
-    // const router = require("express").Router();
-    // const routeController = require('../controllers/connectionController')
-    
-    
-    // router.post('/create', )
-    // router.delete('/delete', routeController.deleteCustomerOrders)
-    
-
 
     
+
 
 router.delete('/delete', async(req, res) => {
+    req.body.orderNumber = orderNumber;
+    functions.deleteCustomerOrders(orderNumber)
+    res.send('Customer has been deleted')
     res.send('Order now deleted')
 })
 
 module.exports = router;
+
+// const router = require("express").Router();
+// const routeController = require('../controllers/connectionController')
+    
+    
+
