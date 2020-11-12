@@ -41,8 +41,4 @@ router.delete('/delete', async(req, res) => {
 
 module.exports = router;
 
-// const router = require("express").Router();
-// const routeController = require('../controllers/connectionController')
-    
-    
 
