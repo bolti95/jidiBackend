@@ -8,15 +8,12 @@ router.get('/', async (req, res) => {
 });
 
 
-
-
-
 // router.post('/create', async (req, res) => {
 //     console.log('hello')
-//        const {userName, email, password} = req.body
+//        const {name, userName, email, userPassword} = req.body
 //         functions.createUser(req.body) 
 //         // console.log(req.body)
-//         if (!userName || !email || !password) {
+//         if (!name || !userName || !email || !userPassword) {
 //             res.send('signup', ({info:'Please fill out all fields correctly.'}));
 //             return;
 //          }
@@ -30,10 +27,9 @@ router.get('/', async (req, res) => {
     
 //         // let user = new UserModel({
 //         //     name,
+//                userName,
 //         //     email,
-//         //     age,
-//         //     phoneNumber,
-//         //     password: hashedpassword
+//         //     userPassword: hashedpassword
 //         // })
     
 //         user.save();
