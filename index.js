@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 require('dotenv').config(); //using dotenv to run server
 
 const checkout = require('./routes/checkoutRouter');
-const stockedProducts = require('./routes/stockedProductsRouter')
-
+// const stockedProducts = require('./routes/stockedProductsRouter')
+const signup = require('./routes/signupRouter');
 
 const sql = require('mssql')
 
@@ -20,7 +20,8 @@ app.use(bodyParser.json());
 // app.use('/' , routes);
 // app.use('/basket' , basket);
 app.use('/checkout', checkout);
-app.use('/stockedProducts', stockedProducts)
+// app.use('/stockedProducts', stockedProducts)
+app.use('/signup/create', signup)
 
 
 

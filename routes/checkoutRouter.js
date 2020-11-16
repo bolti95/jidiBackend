@@ -31,6 +31,17 @@ router.post('/create', async (req, res) => {
 
     
 
+router.put('/updateStockedProducts', async(req, res) => {
+
+    const {desktop, laptop, iphone, phonecase, fitbit} = req.body
+
+    functions.updateStockedProducts({desktop, laptop, iphone, phonecase, fitbit}) 
+
+
+    res.send({updateProducts: 'Quantities updated'})
+
+})
+
 
 router.delete('/delete', async(req, res) => {
     req.body.orderNumber = orderNumber;
