@@ -8,36 +8,39 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/create', async (req, res) => {
-    console.log('hello')
-       const {userName, email, password} = req.body
-        functions.createUser(req.body) 
-        // console.log(req.body)
-        if (!userName || !email || !password) {
-            res.render('signup', ({info:'Please fill out all fields correctly.'}));
-            return;
-         }
+
+
+
+// router.post('/create', async (req, res) => {
+//     console.log('hello')
+//        const {userName, email, password} = req.body
+//         functions.createUser(req.body) 
+//         // console.log(req.body)
+//         if (!userName || !email || !password) {
+//             res.send('signup', ({info:'Please fill out all fields correctly.'}));
+//             return;
+//          }
     
-        if (await UserModel.checkDups(userName, email)) {
-            res.render('signup', ({info:'A user with this email or phone number already exists'}));
-            return;
-        }
+//         if (await UserModel.checkDups(userName, email)) {
+//             res.send('signup', ({info:'A user with this email or phone number already exists'}));
+//             return;
+//         }
     
-        let hashedpassword = await UserModel.hashPassword(password);
+//         let hashedpassword = await UserModel.hashPassword(password);
     
-        // let user = new UserModel({
-        //     name,
-        //     email,
-        //     age,
-        //     phoneNumber,
-        //     password: hashedpassword
-        // })
+//         // let user = new UserModel({
+//         //     name,
+//         //     email,
+//         //     age,
+//         //     phoneNumber,
+//         //     password: hashedpassword
+//         // })
     
-        user.save();
+//         user.save();
     
-        res.send({message: 'Order created', user})
+//         res.send({message: 'User created', user})
        
-    });
+//     });
 
 
 module.exports = router;
