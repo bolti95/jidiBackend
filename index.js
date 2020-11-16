@@ -6,6 +6,7 @@ require('dotenv').config(); //using dotenv to run server
 const checkout = require('./routes/checkoutRouter');
 // const stockedProducts = require('./routes/stockedProductsRouter')
 const signup = require('./routes/signupRouter');
+const login = require('./routes/loginRouter');
 
 const sql = require('mssql')
 
@@ -21,7 +22,8 @@ app.use(bodyParser.json());
 // app.use('/basket' , basket);
 app.use('/checkout', checkout);
 // app.use('/stockedProducts', stockedProducts)
-app.use('/signup/create', signup)
+app.use('/signup/', signup)
+app.use('/login/', login)
 
 
 
