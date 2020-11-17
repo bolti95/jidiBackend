@@ -14,19 +14,20 @@ router.get('/', async (req, res) => {
 router.post('/create', async (req, res) => {
     console.log('hello')
        const {name, userName, email, userPassword} = req.body
-        functions.createUser(name, userName, email, userPassword) 
         // console.log(req.body)
         if (!name || !userName || !email || !userPassword) {
-            res.send('signup', ({info:'Please fill out all fields correctly.'}));
+            res.send({info:'Please fill out all fields correctly.'});
             return;
          }
     
         if (await functions.checkIfDuplicate(userName, email)) {
-            res.send('signup', ({info:'A user with this email or phone number already exists'}));
+            res.send({info:'A user with this email or phone number already exists'});
             return;
         }
     
         let hashedpassword = await functions.hashPassword(userPassword);
+
+        functions.createUser({name, userName, email, userPassword: hashedpassword}); 
     
         // let user = ({
         //     name,
@@ -35,10 +36,6 @@ router.post('/create', async (req, res) => {
         //     userPassword: hashedpassword
         // })
     
-        user.save();
-
-        req.session.userID = nanoid();
-        req.session.save();
     
         res.send({message: 'User created', newUser: name, userName, email, userPassword})
        
