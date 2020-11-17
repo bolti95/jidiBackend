@@ -22,13 +22,13 @@ const config = {
     }
 
     const connection = async () => {
-        sql.connect(config, function (err) {
-            enableArithAbort: true
-            })
-        }
-    
-        connection();
-    
+        await sql.connect('mssql://sa:Password1@localhost,' + 1433 + '/TechStore', {
+        enableArithAbort: true
+        })
+    }
+
+    connection();
+
 
 
 // connection();
