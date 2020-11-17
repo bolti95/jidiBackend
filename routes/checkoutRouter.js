@@ -1,4 +1,7 @@
 const router = require("express").Router();
+const orderid = require('order-id')('mysecret');
+const bodyParser = require('body-parser');
+const functions = require('../lib/connection')
 
 const orderid = require('order-id')('mysecret');
 const bodyParser = require('body-parser');
@@ -29,7 +32,6 @@ router.post('/create', async (req, res) => {
        
     });
 
-    
 
 router.put('/updateStockedProducts', async(req, res) => {
 
