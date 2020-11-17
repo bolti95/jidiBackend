@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const bodyParser = require('body-parser');
 const functions = require('../lib/connection');
+
 const bcrypt = require('bcrypt');
 const {nanoid} = require('nanoid');
 const sql = require('mssql');
@@ -23,6 +24,7 @@ const sql = require('mssql');
 //     }
 
 //     connection();
+
 
 
 
@@ -52,8 +54,6 @@ router.post('/create', async (req, res) => {
 
         // generate session ID
 
-    
-    
         res.send({message: 'User created', newUser: name, userName, email, userPassword})
        
     });

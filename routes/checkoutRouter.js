@@ -3,6 +3,12 @@ const orderid = require('order-id')('mysecret');
 const bodyParser = require('body-parser');
 const functions = require('../lib/connection')
 
+const orderid = require('order-id')('mysecret');
+const bodyParser = require('body-parser');
+
+const functions = require('../lib/connection')
+
+
 router.get('/', async (req, res) => {
     res.send('Checkout page');
 });
@@ -25,7 +31,7 @@ router.post('/create', async (req, res) => {
         res.send({message: 'Order created', orderNumber: orderNumber})
        
     });
- 
+
 
 router.put('/updateStockedProducts', async(req, res) => {
 

@@ -2,12 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config(); //using dotenv to run server
-const session = require('express-session');
+
+
 const checkout = require('./routes/checkoutRouter');
+// const stockedProducts = require('./routes/stockedProductsRouter')
 const signup = require('./routes/signupRouter');
 const login = require('./routes/loginRouter');
+
+
+const session = require('express-session');
+
 const MSSQLStore = require('connect-mssql')(session);
 const sql = require('mssql');
+
 
 
 const app = express();
@@ -56,8 +63,10 @@ app.use(session({
 // app.use('/stockedProducts', stockedProducts)
 
 app.use('/checkout', checkout);
+
 app.use('/signup', signup)
 app.use('/login', login)
+
 
 
 
