@@ -1,14 +1,17 @@
 const router = require("express").Router();
 const bodyParser = require('body-parser');
 const functions = require('../lib/connection');
+
 const bcrypt = require('bcrypt');
 const {nanoid} = require('nanoid');
+
 
 
 
 router.get('/', async (req, res) => {
     res.send('Sign up page');
 });
+
 
 
 router.post('/create', async (req, res) => {
@@ -29,13 +32,7 @@ router.post('/create', async (req, res) => {
 
         functions.createUser({name, userName, email, userPassword: hashedpassword}); 
     
-        // let user = ({
-        //     name,
-        //     userName,
-        //     email,
-        //     userPassword: hashedpassword
-        // })
-    
+
     
         res.send({message: 'User created', newUser: name, userName, email, userPassword})
        
