@@ -7,6 +7,7 @@ const checkout = require('./routes/checkoutRouter');
 const signup = require('./routes/signupRouter');
 const login = require('./routes/loginRouter');
 const MSSQLStore = require('connect-mssql')(session);
+const sql = require('mssql');
 
 
 const app = express();
@@ -20,7 +21,13 @@ const app = express();
 
 //     }
 
+const connection = async () => {
+    await sql.connect('mssql://sa:Password1@localhost,1433/TechStore',{
+        enableArithAbort: true
+    })
+}
 
+connection();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
