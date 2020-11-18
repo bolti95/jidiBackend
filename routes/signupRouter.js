@@ -4,6 +4,26 @@ const functions = require('../lib/connection');
 
 const bcrypt = require('bcrypt');
 const {nanoid} = require('nanoid');
+const sql = require('mssql');
+
+
+// const config = {
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASS,
+//     server: process.env.DB_HOST,
+//     database: process.env.DB_Database,
+//     port: process.env.DB_PORT,
+
+//     }
+
+
+//     const connection = async () => {
+//     sql.connect(config, function (err) {
+//         enableArithAbort: true
+//         })
+//     }
+
+//     connection();
 
 
 
@@ -15,7 +35,7 @@ router.get('/', async (req, res) => {
 
 
 router.post('/create', async (req, res) => {
-    console.log('hello')
+    console.log(req.sessionID)
        const {name, userName, email, userPassword} = req.body
        console.log(req.sessionID)
         // console.log(req.body)

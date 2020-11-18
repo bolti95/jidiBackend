@@ -1,15 +1,15 @@
 const router = require("express").Router();
 const bodyParser = require('body-parser');
 const functions = require('../lib/connection');
-const session = require('express-session');;
+const session = require('express-session');
+const MSSQLStore = require('connect-mssql')(session);
+const nanoid = require('nanoid');
+
+
 
 router.get('/', async (req, res) => {
     res.send('Login page');
 });
-
-router.get('/authorised', async (req, res) => {
-    res.send('hello');
-})
 
 
 router.post('/authorised', async (req, res) => {
@@ -26,7 +26,9 @@ router.post('/authorised', async (req, res) => {
         return;
     }
     // if (await functions.comparePassword(userPassword)) {
+
         // user can login in if true, other wrong
+
         // req.sessionID.isAuthed = true; 
         functions.isAuthorised(sessionID, sessionCookie, expires, userName, isAuthed)
 
@@ -43,6 +45,11 @@ router.post('/authorised', async (req, res) => {
     // }
     // res.send({err:'You have entered the wrong password. Please fill out all the fields correctly.'});
     // console.log('wrong password')
+
+              
+        return;
+    }
+
 });
 
 
