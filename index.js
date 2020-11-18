@@ -21,10 +21,14 @@ const config = {
 const connection = async () => {
     await sql.connect('mssql://sa:Password1@localhost,1433/TechStore', {
         enableArithAbort: true
-    })
-}
+        })
+    }
 
-connection();
+    connection();
+
+
+
+// connection();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
