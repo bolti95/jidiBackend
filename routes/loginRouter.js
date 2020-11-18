@@ -13,16 +13,22 @@ router.get('/authorised', async (req, res) => {
 
 
 router.post('/authorised', async (req, res) => {
-    let {userName, userPassword} = req.body;
-    let sessionID = req.sessionID
+    // let {userName, userPassword} = req.body;
+    let sessionID = req.sessionID;
+    let sessionCookie = req.session.cookie;
+    let expires = req.session.cookie._expires;
+    let userName = req.body.userName
+    let isAuthed = 1;
+
+    console.log(req.session)
     if (!await functions.checkExists(userName)) {
         res.send({err:'a user with this userName doesn\'t exist'});
         return;
     }
-    if (await functions.comparePassword(userPassword)) {
+    // if (await functions.comparePassword(userPassword)) {
         // user can login in if true, other wrong
         // req.sessionID.isAuthed = true; 
-        functions.isAuthorised(sessionID)
+        functions.isAuthorised(sessionID, sessionCookie, expires, userName, isAuthed)
 
         // req.sessionID = isAuthed 
         req.session.save();
@@ -31,20 +37,16 @@ router.post('/authorised', async (req, res) => {
 
         //hhihihoiho
 
-        return;
 
-    }
-    res.send({err:'You have entered the wrong password. Please fill out all the fields correctly.'});
+        // return;
 
+    // }
+    // res.send({err:'You have entered the wrong password. Please fill out all the fields correctly.'});
+    // console.log('wrong password')
 });
 
 
 
-
-// router.get('/profile',  (req, res) => { 
-//     // checkSignedIn,
-//     res.send('profile')
-// })
 
 
 router.get('/logout', (req, res) => {
