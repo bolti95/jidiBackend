@@ -37,6 +37,7 @@ router.get('/', async (req, res) => {
 router.post('/create', async (req, res) => {
     console.log(req.sessionID)
        const {name, userName, email, userPassword} = req.body
+       console.log(req.sessionID)
         // console.log(req.body)
         if (!name || !userName || !email || !userPassword) {
             res.send({info:'Please fill out all fields correctly.'});
@@ -51,9 +52,13 @@ router.post('/create', async (req, res) => {
         let hashedpassword = await functions.hashPassword(userPassword);
 
         functions.createUser({name, userName, email, userPassword: hashedpassword}); 
-
-        // generate session ID
-
+    
+        // functions.createSession({sessionID: req.sessionID})
+        let users={
+            email: req.body.email,
+            password: hashedpassword
+        }
+    
         res.send({message: 'User created', newUser: name, userName, email, userPassword})
        
     });
