@@ -22,8 +22,20 @@ router.post('/login', async (req, res) => {
     }
     if (await functions.comparePassword(email, password)) {
         // user can login in if true, other wrong
+
+        // req.sessionID.isAuthed = true; 
+        functions.isAuthorised(sessionID)
+
+        // req.sessionID = isAuthed 
+        req.session.save();
+
+        res.send({userLoggedIn: 'you are now logged in'});
+
+        //hhihihoiho
+
+
         req.session.userID = nanoid();
-        res.redirect('/profile');
+        
         return;
     }
     res.send({err:'You have entered the wrong password or email. Please fill out all the fields correctly.'});
