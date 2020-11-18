@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config(); //using dotenv to run server
 
 const routes = require('./routes/router');
-// const basket = require('./routes/basketRouter');  being created
+const basket = require('./routes/basketRouter');  
 const checkout = require('./routes/checkoutRouter');
 const customerOrder = require('./routes/customerOrderRouter')
 const stockedProducts = require('./routes/stockedProductsRouter')
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 
 app.use('/' , routes);
-// app.use('/basket' , basket);
+app.use('/basket' , basket);
 app.use('/checkout', checkout);
 app.use('/customerOrder', customerOrder)
 app.use('/stockedProducts', stockedProducts)

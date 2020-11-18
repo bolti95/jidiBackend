@@ -21,3 +21,10 @@ exports.decreaseStockedProducts = async (req, res) => {
      res.send('Stock decreased')
     
 }
+
+exports.increaseStockedProducts = async (req, res) => {
+    let {ID} = req.query
+     functions.increaseStockedProducts(ID)
+     res.send('Stock increased')
+    
+}
