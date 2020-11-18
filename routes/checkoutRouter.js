@@ -3,12 +3,6 @@ const orderid = require('order-id')('mysecret');
 const bodyParser = require('body-parser');
 const functions = require('../lib/connection')
 
-const orderid = require('order-id')('mysecret');
-const bodyParser = require('body-parser');
-
-const functions = require('../lib/connection')
-
-
 router.get('/', async (req, res) => {
     res.send('Checkout page');
 });
@@ -53,5 +47,3 @@ router.delete('/delete', async(req, res) => {
 })
 
 module.exports = router;
-
-

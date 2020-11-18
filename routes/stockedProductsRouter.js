@@ -2,10 +2,8 @@
 
 // const functions = require('../lib/connection')
 
-<<<<<<< HEAD
 router.patch('/decrease', routeController.decreaseStockedProducts)
 router.patch('/increase', routeController.increaseStockedProducts)
-=======
 // // router.get('/basket', async (req, res) => {
 // //     res.send('Items in Basket');
 // // });
@@ -21,5 +19,4 @@ router.patch('/increase', routeController.increaseStockedProducts)
 // })
 
 // module.exports = router;
->>>>>>> ff57d0b3bb98982f71678ef0174bc3251aeaf256
 
