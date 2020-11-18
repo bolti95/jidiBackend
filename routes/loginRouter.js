@@ -7,24 +7,30 @@ const nanoid = require('nanoid');
 
 
 
-
-
 router.get('/', async (req, res) => {
     res.send('Login page');
 });
 
 
-router.post('/login', async (req, res) => {
-    let {email, password} = req.body;
-    if (!await functions.checkExists(email)) {
-        res.send({err:'a user with this email doesn\'t exist'});
+router.post('/authorised', async (req, res) => {
+    // let {userName, userPassword} = req.body;
+    let sessionID = req.sessionID;
+    let sessionCookie = req.session.cookie;
+    let expires = req.session.cookie._expires;
+    let userName = req.body.userName
+    let isAuthed = 1;
+
+    console.log(req.session)
+    if (!await functions.checkExists(userName)) {
+        res.send({err:'a user with this userName doesn\'t exist'});
         return;
     }
-    if (await functions.comparePassword(email, password)) {
+    // if (await functions.comparePassword(userPassword)) {
+
         // user can login in if true, other wrong
 
         // req.sessionID.isAuthed = true; 
-        functions.isAuthorised(sessionID)
+        functions.isAuthorised(sessionID, sessionCookie, expires, userName, isAuthed)
 
         // req.sessionID = isAuthed 
         req.session.save();
@@ -34,21 +40,21 @@ router.post('/login', async (req, res) => {
         //hhihihoiho
 
 
-        req.session.userID = nanoid();
-        
+        // return;
+
+    // }
+    // res.send({err:'You have entered the wrong password. Please fill out all the fields correctly.'});
+    // console.log('wrong password')
+
+              
         return;
     }
-    res.send({err:'You have entered the wrong password or email. Please fill out all the fields correctly.'});
+
 });
 
 
-router.get('/login', (req, res) => {
-    res.render('index');
-})
 
-router.get('/profile', functions.checkSignedIn, (req, res) => {
-    res.render('profile')
-})
+
 
 router.get('/logout', (req, res) => {
     req.session.destroy();
