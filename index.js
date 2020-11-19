@@ -15,16 +15,25 @@ const config = {
     password: process.env.DB_PASS,
     server: process.env.DB_SERVER,
     database: process.env.DB_Database,
-    port: process.env.DB_PORT,
+    // port: process.env.DB_PORT,
     }
 
-const connection = async () => {
-    await sql.connect('mssql://sa:Password1@localhost,1433/TechStore', {
-        enableArithAbort: true
-    })
+// const connection = async () => {
+//     await sql.connect('mssql://DB_USER:DB_PASS@DB_Database/TechStore', {
+//         enableArithAbort: true
+//     })
+// }
+
+const connect = async () => {
+    await sql.connect(config);
+
+    let data = await mssql.query `SELECT * FROM StockedProducts`;
+    console.log(data);
 }
 
-connection();
+connect();
+
+// connection();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));

@@ -13,12 +13,15 @@ router.get('/authorised', async (req, res) => {
 
 
 router.post('/authorised', async (req, res) => {
-    // let {userName, userPassword} = req.body;
+    // const userName = req.body
     let sessionID = req.sessionID;
     let sessionCookie = req.session.cookie;
     let expires = req.session.cookie._expires;
-    let userName = req.body.userName
+    let data = req.body;
+    let userName = req.body
     let isAuthed = 1;
+    console.log(userName);
+    // console.log(data);
 
     console.log(req.session)
     if (!await functions.checkExists(userName)) {
