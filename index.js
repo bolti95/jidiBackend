@@ -27,8 +27,8 @@ const config = {
 const connect = async () => {
     await sql.connect(config);
 
-    let data = await mssql.query `SELECT * FROM StockedProducts`;
-    console.log(data);
+    // let data = await mssql.query `SELECT * FROM StockedProducts`;
+    // console.log(data);
 }
 
 connect();
