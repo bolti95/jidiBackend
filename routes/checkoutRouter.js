@@ -9,6 +9,10 @@ router.get('/', async (req, res) => {
     res.send('Checkout page');
 });
 
+router.get('/create', async (req, res) => {
+    res.send('Checkout page');
+});
+
 
 router.post('/create', async (req, res) => {
     console.log('hello')
