@@ -43,7 +43,7 @@ app.use(bodyParser.json());
 
 app.use(session({
     store: new MSSQLStore(config, {ttl: 1000 * 60 * 60 * 24, autoRemove: 'interval'}),
-    secret: 'supersecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -61,7 +61,7 @@ app.use('/signup', signup)
 app.use('/login', login)
 
 
-app.listen(process.env.PORT || 3005, () => {
+app.listen(process.env.PORT, () => {
     console.log ('Server is running on port 3005')
 })
 // process.env.PORT ||
