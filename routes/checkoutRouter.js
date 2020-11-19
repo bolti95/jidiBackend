@@ -3,11 +3,6 @@ const orderid = require('order-id')('mysecret');
 const bodyParser = require('body-parser');
 const functions = require('../lib/connection')
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 71e0bd09a284c34fdc6104534a50cbf6ea5a9e9b
 router.get('/', async (req, res) => {
     res.send('Checkout page');
 });
